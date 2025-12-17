@@ -42,7 +42,7 @@ infotype dequeue(Queue &Q) {
     } else {
         x = Q.info[Q.head];
         
-        /* ALTERNATIF 1: head diam, tail bergerak (dengan pergeseran)
+        // ALTERNATIF 1: head diam, tail bergerak (dengan pergeseran)
         if (Q.head == Q.tail) {
             // Queue hanya memiliki 1 elemen
             Q.head = -1;
@@ -53,58 +53,23 @@ infotype dequeue(Queue &Q) {
                 Q.info[i] = Q.info[i + 1];
             }
             Q.tail--;
-        }
-        */
-        
-        /* ALTERNATIF 2: head bergerak, tail bergerak (tanpa pergeseran)
-        if (Q.head == Q.tail) {
-            // Queue hanya memiliki 1 elemen
-            Q.head = -1;
-            Q.tail = -1;
-        } else {
-            // Head maju
-            Q.head++;
-        }
-        */
-        
-        /* ALTERNATIF 3: head dan tail berputar (circular)
-        if (Q.head == Q.tail) {
-            // Queue hanya memiliki 1 elemen
-            Q.head = -1;
-            Q.tail = -1;
-        } else {
-            // Head berputar (circular)
-            Q.head = (Q.head + 1) % 5;
-        }
-        */
-    
+        }    
     }
     return x;
 }
 
 // Menampilkan isi queue
 void printInfo(Queue Q) {
+    cout << endl;
     cout << " " << Q.head << " - " << Q.tail << " | ";
     
     if (isEmptyQueue(Q)) {
         cout << "empty queue";
     } else {
-        /* ALTERNATIF 1 & 2: tampilkan dari head sampai tail
+        // ALTERNATIF 1: tampilkan dari head sampai tail
         for (int i = Q.head; i <= Q.tail; i++) {
             cout << Q.info[i];
             if (i < Q.tail) cout << " ";
         }
-        */
-        
-        /* ALTERNATIF 3: tampilkan dengan cara berputar (circular)
-        int i = Q.head;
-        while (true) {
-            cout << Q.info[i];
-            if (i == Q.tail) break;
-            cout << " ";
-            i = (i + 1) % 5; // Berputar
-        }
-        */
     }
-    cout << endl;
 }
